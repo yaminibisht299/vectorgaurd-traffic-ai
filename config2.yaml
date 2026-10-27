@@ -1,0 +1,26 @@
+camera:
+  source: 0                 # 0 for webcam, or "traffic.mp4" for a video file
+  grid_size_pixels: 50
+  resize_factor: 1.0
+  id: "CAM_INTERSECTION_01"
+  lat: 26.8500
+  lon: 75.8000
+
+learning:
+  phase_frames: 300         # Number of frames to learn normal flow (e.g., ~10 seconds at 30 fps)
+
+detection_thresholds:
+  vehicle_classes: [2, 3, 5, 7]  # COCO indices: 2=car, 3=motorcycle, 5=bus, 7=truck
+
+storage:
+  flow_map_file: "flow_map.json"
+  alerts_log_file: "traffic_alerts.jsonl"
+
+network:
+  enable_webhooks: false    # Set to true if running a webhook server
+  webhook_url: "http://127.0.0.1:5000/api/alert"
+
+speed_estimation:
+  enable: true
+  speed_limit_kmh: 40
+  pixels_per_meter: 8.0
